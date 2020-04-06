@@ -1,0 +1,44 @@
+
+<task-nav-bar></task-nav-bar>
+
+<!-- EDITING -->
+<ui-view class="m-2"></ui-view>
+
+
+<div class="container-fluid">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <button ui-sref="task.edit({taskId:$ctrl.getT()._id})" type ="button" class="btn btn-link"> <i class="fas fa-pen"></i>
+                </button>
+            </td>
+            <td width="40%">
+                {{$ctrl.getT().definition}}
+            </td>
+            <td>
+<!--                <span> {{$ctrl.getT().endDate| date:'dd/MM/yyyy'}}</span>-->
+                <span> {{$ctrl.getT().endDate| date:'dd/MM'}}</span>
+            </td>
+            <td>
+                <!--            <p>Start: {{getT().startDate| date:'dd/MM/yyyy @ h:mma'}}</p>-->
+                <span class="text-center">{{$ctrl.getT().resolved | checkMark}}</span>
+            </td>
+            <td ng-if="!$ctrl.getT().resolved">
+                <button type="button" class="btn btn-success" ng-click="$ctrl.checkTask($ctrl.getT())">{{'\u2713'}}</button>
+            </td>
+            <td>
+                <button type="button" class="close" ng-click="$ctrl.deleteTask($ctrl.getT()); "><i class="fas fa-times-circle"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <p>{{$ctrl.getT().explanation}}</p>
+            </td>
+        </tr>
+    </table>
+
+
+</div >
+
+
+
